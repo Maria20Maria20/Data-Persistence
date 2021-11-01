@@ -8,7 +8,7 @@ using System.IO;
 
 public class Menu : MonoBehaviour
 {
-    public string inputName; //переменная для сохранения имени игрока в разных сценах
+    public static string inputName; //переменная для сохранения имени игрока в разных сценах
 
     [SerializeField] private Text name; //здесь в инспекторе указано текстовое поле, где игрок вводит своё имя
     [SerializeField] private InputField inputField; //здесь в инспекторе указано поле InputField для ввода имени игрока
@@ -32,8 +32,6 @@ public class Menu : MonoBehaviour
     public void LoadText() //функция для загрузки имени, которое ввёл игрок
     {
         inputName = inputField.text; //введённое имя = имя из компонента Text, который находится у InputField (дочерний объект Text у объекта InputField)
-        PersistenceManager.Instance.nameScoreHigh = inputName; //переменная для вывода имени игрока = введённое имя
-        PersistenceManager.Instance.SaveScore(); //сохраняю переменную для вывода имени игрока (чтоб потом использовать её в любой сцене)
     }
 
     public void StartNew() //функция для кнопки "Старт"

@@ -15,7 +15,7 @@ public class Game : MonoBehaviour
     [SerializeField] private GameObject backToMenu; //тут в инспекторе указана кнопка возврата в меню
 
     private int score; //вывод текущего кол-ва набранных очков
-    private float timer = 5; //кол-во секунд в таймере
+    private float timer = 10; //кол-во секунд в таймере
     private Button button; //переменная для компонента Button, чтоб можно было выключать кликер, когда игра закончилась
 
     void Start() //показывается при старте игры
@@ -62,9 +62,10 @@ public class Game : MonoBehaviour
     {
         if (PersistenceManager.Instance.scoreHigh < score) //если текущее кол-во очков больше, чем рекорд, то:
         {
+            PersistenceManager.Instance.nameScoreHigh = Menu.inputName; //имя набравшего рекорд = имени, введённому в меню
             PersistenceManager.Instance.scoreHigh = score; //приравниваем текущее кол-во очков к рекорду (обновляем значение рекорда)
             highScore.text = "High Score: " + PersistenceManager.Instance.scoreHigh + " " + PersistenceManager.Instance.nameScoreHigh; //выводим текст с обновлённым рекордом и именем игрока
-            PersistenceManager.Instance.SaveScore(); //сохраняем новый рекорд
+            PersistenceManager.Instance.SaveScore(); //сохраняем новый рекорд и имя набравшего рекорд
         }
         else //если текущее кол-во очков меньше, чем рекорд, то:
         {
