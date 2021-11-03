@@ -6,7 +6,8 @@ using System.IO;
 
 public class PersistenceManager : MonoBehaviour
 {
-    public static PersistenceManager Instance; //к компонентам этого скрипта можно обращатьс€ через переменную Instance
+    public static PersistenceManager Instance { get; private set; } //к компонентам этого скрипта можно обращатьс€ через переменную Instance. „тоб никто не мог сломать игру, помен€в эту общедоступное переменную, ставлю геттер (get;) (режим чтени€).
+                                                                    //ѕотом ставлю закрытый сеттер, чтоб переменной можно было пользоватьс€ только в классах, наследованных от MonoBehaviour (а если оставить только геттер, то будут ошибки)
 
     public int scoreHigh; //переменна€ дл€ вывода рекорда
     public string nameScoreHigh; //переменна€ дл€ вывода имени игрока

@@ -43,9 +43,9 @@ public class Game : MonoBehaviour
         }
     }
 
-    public void Score() //показывает сколько очков игрок набрал
+    public virtual void Score() //показывает сколько очков игрок набрал
     {
-        score++; //увеличиваю кол-во очков на 1
+        score+=1; //увеличиваю кол-во очков на 1
         scoreText.text = "Score: " + score; //выводится текст "Score: " + кол-во набранных очков
     }
 

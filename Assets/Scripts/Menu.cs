@@ -8,11 +8,13 @@ using System.IO;
 
 public class Menu : MonoBehaviour
 {
-    public static string inputName; //переменная для сохранения имени игрока в разных сценах
+    public static string inputName { get; private set; } //переменная для сохранения имени игрока в разных сценах. Чтоб никто не мог сломать игру, поменяв эту общедоступное переменную, ставлю геттер (get;) (режим чтения).
+                                                         //Потом ставлю закрытый сеттер, чтоб переменной можно было пользоваться только в классах, наследованных от MonoBehaviour (а если оставить только геттер, то будут ошибки)
 
     [SerializeField] private Text name; //здесь в инспекторе указано текстовое поле, где игрок вводит своё имя
     [SerializeField] private InputField inputField; //здесь в инспекторе указано поле InputField для ввода имени игрока
     [SerializeField] Text highScore; //здесь в инспекторе указано поле для вывода рекорда
+    [SerializeField] private GameObject notifyName; //здесь указано уведомление для игрока, который, не вводя имени, хочет зайти в игру
 
     void Start() //при старте меню:
     {
@@ -36,7 +38,21 @@ public class Menu : MonoBehaviour
 
     public void StartNew() //функция для кнопки "Старт"
     {
-        SceneManager.LoadScene(1); //загружаем другую сцену. 1 - индекс сцены, которую я хочу загрузить. Индекс сцены указан в Build Settings->Scenes In Build->справа от добавленной сцены цифра
+        if (inputName != null) //если игрок ввёл своё имя, то:
+        {
+            SceneManager.LoadScene(1); //загружаем другую сцену. 1 - индекс сцены, которую я хочу загрузить. Индекс сцены указан в Build Settings->Scenes In Build->справа от добавленной сцены цифра
+        }
+        else //если не ввёл, то:
+        {
+            StartCoroutine(NoName()); //включается последовательность действий с именем NoName
+        }
+    }
+
+    IEnumerator NoName() //последовательность действий (IEnumerator) для тех, кто не указал своё имя (NoName)
+    {
+        notifyName.gameObject.SetActive(true); //включается игровой объект, указанный в инспекторе в переменной notifyName
+        yield return new WaitForSeconds(3); //проходит 3 секунды
+        notifyName.gameObject.SetActive(false); //выключается игровой объект, указанный в инспекторе в переменной notifyName
     }
 
     public void Exit() //функция для кнопки "Выход"

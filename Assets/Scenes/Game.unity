@@ -152,7 +152,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41b08dae0a696c147b90ebf66f91b730, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: 0
   highScore: {fileID: 1140899613}
   scoreText: {fileID: 1149781726}
   timerText: {fileID: 790706971}
@@ -418,6 +417,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreHigh: 0
+  nameScoreHigh: 
+  load: 0
   highText: {fileID: 1140899613}
 --- !u!4 &356574700
 Transform:
