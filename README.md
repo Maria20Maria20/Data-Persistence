@@ -5,7 +5,7 @@
 2.Во вкладке Projects нажать ADD:  
 ![image](https://user-images.githubusercontent.com/92053203/148236892-5b09d20b-4791-44db-aa30-f9d1d0625819.png)  
 3.Выбрать папку Data-Persistence:   
-
+![image](https://user-images.githubusercontent.com/92053203/148421472-b82a4f6e-1d67-4b11-bac5-47b17e46ec1c.png)
 4.В ней находится 2 папки, в каждой из которых есть сцены и скрипты, которые были использованы при их создании:  
 
 # Сцены:  
